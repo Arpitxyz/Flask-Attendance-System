@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block header %}
+    <h1><center>Login Page</center></h1>
+    <h2><center>Welcome {{first_name}}!</center></h2>
+{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, msg in messages %}
+                <p style="color: green;">{{ msg }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    
+    <form action="/login" method="post">
+        <br>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <br><br>
+
+        <label for="pw">Password</label>
+        <input type="password" name="password" id="pw">
+        <br><br>
+
+        <label for="hint">Hint</label>
+        <input type="text" name="hint" id="hint">
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
